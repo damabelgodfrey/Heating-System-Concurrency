@@ -12,7 +12,20 @@ public class GroundFloorThermostatControlUnit extends Thread {
 	public void run()
 	{
 		
-			
+			for (int i = 0; i < temperatures.length; i++)
+			{
+				System.out.println(this.getName() + " is setting temperature of  " + temperatures[i]);
+				try
+				{
+					temperatureController.setGFtemp(temperatures[i]);
+					XUtils.sleepForRandomTime(this.getName());
+				} catch (InterruptedException e)
+				{
+					System.out.println("Error Alert" + e.toString());
+				} catch(Exception e) {
+					System.out.println("Error Alert" + e.toString());
+				}
+			}
 	}
 
 }
